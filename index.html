@@ -1,0 +1,1130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#0f766e">
+
+<title>Job Alert Pakistan</title>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+:root {
+    --primary: #0f766e;
+    --primary-dark: #0b5f59;
+    --bg: #f4f7f7;
+    --card: #ffffff;
+    --text: #172121;
+    --muted: #6b7777;
+    --border: #e3e9e8;
+    --soft: #e8f5f3;
+    --danger: #dc2626;
+}
+
+body.dark {
+    --bg: #101717;
+    --card: #182020;
+    --text: #f1f5f5;
+    --muted: #a6b2b2;
+    --border: #293535;
+    --soft: #203b39;
+}
+
+body {
+    background: var(--bg);
+    color: var(--text);
+    transition: 0.25s;
+}
+
+/* HEADER */
+
+.header {
+    background: var(--primary);
+    color: white;
+    padding: 18px 5%;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 3px 15px rgba(0,0,0,0.12);
+}
+
+.header-inner {
+    max-width: 1100px;
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-size: 22px;
+    font-weight: 800;
+}
+
+.logo span {
+    font-size: 14px;
+    opacity: 0.85;
+    display: block;
+    font-weight: normal;
+}
+
+.header-buttons {
+    display: flex;
+    gap: 8px;
+}
+
+.icon-btn {
+    width: 40px;
+    height: 40px;
+    border: none;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.15);
+    color: white;
+    cursor: pointer;
+    font-size: 18px;
+}
+
+/* MAIN */
+
+.container {
+    max-width: 1100px;
+    margin: auto;
+    padding: 25px 18px 100px;
+}
+
+/* SEARCH */
+
+.search-box {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 5px;
+    display: flex;
+    align-items: center;
+    margin-bottom: 18px;
+}
+
+.search-icon {
+    padding: 10px;
+    color: var(--muted);
+}
+
+.search-box input {
+    width: 100%;
+    border: none;
+    outline: none;
+    background: transparent;
+    color: var(--text);
+    font-size: 15px;
+    padding: 12px 5px;
+}
+
+/* FILTERS */
+
+.filters {
+    display: flex;
+    gap: 9px;
+    overflow-x: auto;
+    padding-bottom: 5px;
+    margin-bottom: 25px;
+}
+
+.filters::-webkit-scrollbar {
+    display: none;
+}
+
+.filter {
+    border: 1px solid var(--border);
+    background: var(--card);
+    color: var(--text);
+    padding: 9px 16px;
+    border-radius: 30px;
+    white-space: nowrap;
+    cursor: pointer;
+    font-size: 13px;
+}
+
+.filter.active {
+    background: var(--primary);
+    color: white;
+    border-color: var(--primary);
+}
+
+/* SECTION */
+
+.section-title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 14px;
+}
+
+.section-title h2 {
+    font-size: 20px;
+}
+
+.section-title small {
+    color: var(--muted);
+}
+
+/* JOB CARD */
+
+.jobs {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+}
+
+.job-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 17px;
+    padding: 18px;
+    transition: 0.2s;
+}
+
+.job-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+}
+
+.job-top {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+.job-title {
+    font-size: 17px;
+    font-weight: 700;
+    line-height: 1.3;
+}
+
+.company {
+    color: var(--primary);
+    font-size: 13px;
+    margin-top: 6px;
+    font-weight: 600;
+}
+
+.save {
+    border: none;
+    background: transparent;
+    color: var(--muted);
+    font-size: 21px;
+    cursor: pointer;
+}
+
+.save.saved {
+    color: #f59e0b;
+}
+
+.job-info {
+    margin-top: 15px;
+    display: grid;
+    gap: 8px;
+}
+
+.info {
+    color: var(--muted);
+    font-size: 13px;
+}
+
+.job-bottom {
+    margin-top: 17px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+.deadline {
+    font-size: 12px;
+    color: var(--danger);
+    font-weight: 600;
+}
+
+.apply {
+    border: none;
+    background: var(--primary);
+    color: white;
+    padding: 10px 16px;
+    border-radius: 9px;
+    cursor: pointer;
+    font-weight: 600;
+}
+
+.apply:hover {
+    background: var(--primary-dark);
+}
+
+/* EMPTY */
+
+.empty {
+    text-align: center;
+    padding: 50px 20px;
+    color: var(--muted);
+    display: none;
+}
+
+/* MODAL */
+
+.modal {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.55);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    z-index: 200;
+}
+
+.modal.active {
+    display: flex;
+}
+
+.modal-content {
+    width: 100%;
+    max-width: 600px;
+    max-height: 90vh;
+    overflow-y: auto;
+    background: var(--card);
+    border-radius: 20px;
+    padding: 25px;
+    position: relative;
+}
+
+.close {
+    position: absolute;
+    right: 18px;
+    top: 15px;
+    border: none;
+    background: var(--soft);
+    color: var(--text);
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 18px;
+}
+
+.modal h2 {
+    padding-right: 45px;
+    margin-bottom: 6px;
+}
+
+.modal-company {
+    color: var(--primary);
+    font-weight: bold;
+}
+
+.modal-section {
+    margin-top: 22px;
+}
+
+.modal-section h3 {
+    font-size: 15px;
+    margin-bottom: 8px;
+}
+
+.modal-section p {
+    color: var(--muted);
+    line-height: 1.6;
+    font-size: 14px;
+}
+
+.modal-apply {
+    display: block;
+    width: 100%;
+    text-align: center;
+    margin-top: 25px;
+    text-decoration: none;
+    background: var(--primary);
+    color: white;
+    padding: 13px;
+    border-radius: 10px;
+    font-weight: bold;
+}
+
+/* BOTTOM NAV */
+
+.bottom-nav {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 65px;
+    background: var(--card);
+    border-top: 1px solid var(--border);
+    display: flex;
+    justify-content: center;
+    gap: 70px;
+    align-items: center;
+    z-index: 90;
+}
+
+.nav-btn {
+    border: none;
+    background: transparent;
+    color: var(--muted);
+    cursor: pointer;
+    text-align: center;
+    font-size: 11px;
+}
+
+.nav-btn div {
+    font-size: 20px;
+    margin-bottom: 2px;
+}
+
+.nav-btn.active {
+    color: var(--primary);
+}
+
+/* RESPONSIVE */
+
+@media(max-width: 700px) {
+
+    .jobs {
+        grid-template-columns: 1fr;
+    }
+
+    .container {
+        padding: 20px 13px 90px;
+    }
+
+    .header {
+        padding: 15px 13px;
+    }
+
+    .logo {
+        font-size: 19px;
+    }
+
+    .bottom-nav {
+        gap: 55px;
+    }
+}
+
+@media(max-width: 400px) {
+
+    .bottom-nav {
+        gap: 35px;
+    }
+
+    .job-card {
+        padding: 15px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header class="header">
+
+    <div class="header-inner">
+
+        <div class="logo">
+            🇵🇰 Job Alert Pakistan
+            <span>Find your next opportunity</span>
+        </div>
+
+        <div class="header-buttons">
+            <button class="icon-btn" onclick="toggleDarkMode()" title="Dark mode">
+                🌙
+            </button>
+
+            <button class="icon-btn" onclick="showNotification()">
+                🔔
+            </button>
+        </div>
+
+    </div>
+
+</header>
+
+
+<main class="container">
+
+    <!-- SEARCH -->
+
+    <div class="search-box">
+
+        <div class="search-icon">🔎</div>
+
+        <input
+            type="text"
+            id="searchInput"
+            placeholder="Search jobs, companies or cities..."
+            oninput="searchJobs()"
+        >
+
+    </div>
+
+
+    <!-- FILTERS -->
+
+    <div class="filters">
+
+        <button class="filter active" onclick="filterJobs('All', this)">
+            All
+        </button>
+
+        <button class="filter" onclick="filterJobs('Government', this)">
+            🏛️ Government
+        </button>
+
+        <button class="filter" onclick="filterJobs('Private', this)">
+            🏢 Private
+        </button>
+
+        <button class="filter" onclick="filterJobs('IT', this)">
+            💻 IT
+        </button>
+
+        <button class="filter" onclick="filterJobs('Teaching', this)">
+            📚 Teaching
+        </button>
+
+        <button class="filter" onclick="filterJobs('Banking', this)">
+            🏦 Banking
+        </button>
+
+        <button class="filter" onclick="filterJobs('Remote', this)">
+            🌐 Remote
+        </button>
+
+    </div>
+
+
+    <!-- JOBS -->
+
+    <div class="section-title">
+
+        <h2>🔥 Latest Jobs</h2>
+
+        <small id="jobCount"></small>
+
+    </div>
+
+    <div class="jobs" id="jobsContainer"></div>
+
+    <div class="empty" id="empty">
+        <div style="font-size:40px;">🔎</div>
+        <h3>No jobs found</h3>
+        <p>Try another search or category.</p>
+    </div>
+
+</main>
+
+
+<!-- BOTTOM NAV -->
+
+<nav class="bottom-nav">
+
+    <button class="nav-btn active" onclick="showAll()">
+        <div>🏠</div>
+        Home
+    </button>
+
+    <button class="nav-btn" onclick="showSaved()">
+        <div>⭐</div>
+        Saved
+    </button>
+
+    <button class="nav-btn" onclick="showNotification()">
+        <div>🔔</div>
+        Alerts
+    </button>
+
+</nav>
+
+
+<!-- JOB MODAL -->
+
+<div class="modal" id="jobModal">
+
+    <div class="modal-content">
+
+        <button class="close" onclick="closeModal()">×</button>
+
+        <h2 id="modalTitle"></h2>
+
+        <div class="modal-company" id="modalCompany"></div>
+
+        <div class="job-info">
+
+            <div class="info" id="modalLocation"></div>
+
+            <div class="info" id="modalEducation"></div>
+
+            <div class="info" id="modalExperience"></div>
+
+            <div class="info" id="modalSalary"></div>
+
+            <div class="info" id="modalDeadline"></div>
+
+        </div>
+
+
+        <div class="modal-section">
+
+            <h3>About the Position</h3>
+
+            <p id="modalDescription"></p>
+
+        </div>
+
+
+        <div class="modal-section">
+
+            <h3>Requirements</h3>
+
+            <p id="modalRequirements"></p>
+
+        </div>
+
+
+        <a
+            href="#"
+            target="_blank"
+            class="modal-apply"
+            id="modalApply"
+        >
+            Apply Now →
+        </a>
+
+    </div>
+
+</div>
+
+
+<script>
+
+/* =====================================
+   SAMPLE JOB DATA
+   ===================================== */
+
+const jobs = [
+
+    {
+        id: 1,
+        title: "Junior Software Developer",
+        company: "Sample Technology Company",
+        category: "IT",
+        location: "Islamabad",
+        education: "BSCS / BSSE",
+        experience: "0-1 Years",
+        salary: "Rs. 50,000 - 80,000",
+        deadline: "25 Aug 2026",
+        description:
+            "Sample listing for demonstration purposes. Replace this with a verified vacancy before publishing.",
+        requirements:
+            "Basic JavaScript, HTML, CSS and problem solving skills.",
+        apply:
+            "https://example.com"
+    },
+
+    {
+        id: 2,
+        title: "Computer Science Teacher",
+        company: "Sample Education Institute",
+        category: "Teaching",
+        location: "Karachi",
+        education: "BSCS / BSIT",
+        experience: "1-2 Years",
+        salary: "Rs. 40,000 - 65,000",
+        deadline: "28 Aug 2026",
+        description:
+            "Sample teaching vacancy for the application's demonstration.",
+        requirements:
+            "Good communication skills and computer science knowledge.",
+        apply:
+            "https://example.com"
+    },
+
+    {
+        id: 3,
+        title: "Banking Officer",
+        company: "Sample Bank",
+        category: "Banking",
+        location: "Lahore",
+        education: "Bachelor's Degree",
+        experience: "Fresh / 1 Year",
+        salary: "Rs. 45,000 - 70,000",
+        deadline: "30 Aug 2026",
+        description:
+            "Sample banking position for demonstration.",
+        requirements:
+            "Bachelor's degree and good communication skills.",
+        apply:
+            "https://example.com"
+    },
+
+    {
+        id: 4,
+        title: "Data Entry Operator",
+        company: "Sample Government Department",
+        category: "Government",
+        location: "Sukkur",
+        education: "Intermediate",
+        experience: "Fresh",
+        salary: "Rs. 35,000 - 50,000",
+        deadline: "02 Sep 2026",
+        description:
+            "Sample government vacancy. Verify the official advertisement before applying.",
+        requirements:
+            "Intermediate qualification and basic computer skills.",
+        apply:
+            "https://example.com"
+    },
+
+    {
+        id: 5,
+        title: "Digital Marketing Assistant",
+        company: "Sample Digital Agency",
+        category: "Private",
+        location: "Karachi",
+        education: "Bachelor's / Diploma",
+        experience: "0-2 Years",
+        salary: "Rs. 40,000 - 60,000",
+        deadline: "05 Sep 2026",
+        description:
+            "Sample private-sector vacancy.",
+        requirements:
+            "Knowledge of social media, content and digital marketing.",
+        apply:
+            "https://example.com"
+    },
+
+    {
+        id: 6,
+        title: "Remote Content Writer",
+        company: "Sample Remote Company",
+        category: "Remote",
+        location: "Pakistan",
+        education: "Bachelor's preferred",
+        experience: "0-2 Years",
+        salary: "Rs. 30,000 - 70,000",
+        deadline: "08 Sep 2026",
+        description:
+            "Sample remote job for demonstration.",
+        requirements:
+            "Strong English writing and research skills.",
+        apply:
+            "https://example.com"
+    }
+
+];
+
+
+/* =====================================
+   VARIABLES
+   ===================================== */
+
+let currentCategory = "All";
+let showingSaved = false;
+
+let savedJobs =
+    JSON.parse(localStorage.getItem("savedJobs")) || [];
+
+
+/* =====================================
+   DISPLAY JOBS
+   ===================================== */
+
+function displayJobs(list = jobs) {
+
+    const container =
+        document.getElementById("jobsContainer");
+
+    const empty =
+        document.getElementById("empty");
+
+    const count =
+        document.getElementById("jobCount");
+
+
+    container.innerHTML = "";
+
+
+    if (list.length === 0) {
+
+        empty.style.display = "block";
+        count.textContent = "0 jobs";
+
+        return;
+
+    }
+
+
+    empty.style.display = "none";
+
+    count.textContent =
+        list.length + (list.length === 1 ? " job" : " jobs");
+
+
+    list.forEach(job => {
+
+        const isSaved =
+            savedJobs.includes(job.id);
+
+
+        const card =
+            document.createElement("div");
+
+        card.className = "job-card";
+
+
+        card.innerHTML = `
+
+            <div class="job-top">
+
+                <div>
+
+                    <div class="job-title">
+                        ${job.title}
+                    </div>
+
+                    <div class="company">
+                        ${job.company}
+                    </div>
+
+                </div>
+
+                <button
+                    class="save ${isSaved ? "saved" : ""}"
+                    onclick="toggleSave(${job.id})"
+                >
+                    ${isSaved ? "★" : "☆"}
+                </button>
+
+            </div>
+
+
+            <div class="job-info">
+
+                <div class="info">
+                    📍 ${job.location}
+                </div>
+
+                <div class="info">
+                    🎓 ${job.education}
+                </div>
+
+                <div class="info">
+                    💼 ${job.experience}
+                </div>
+
+                <div class="info">
+                    💰 ${job.salary}
+                </div>
+
+            </div>
+
+
+            <div class="job-bottom">
+
+                <div class="deadline">
+                    ⏰ ${job.deadline}
+                </div>
+
+                <button
+                    class="apply"
+                    onclick="openJob(${job.id})"
+                >
+                    View Job
+                </button>
+
+            </div>
+
+        `;
+
+
+        container.appendChild(card);
+
+    });
+
+}
+
+
+/* =====================================
+   SEARCH
+   ===================================== */
+
+function searchJobs() {
+
+    const search =
+        document
+        .getElementById("searchInput")
+        .value
+        .toLowerCase()
+        .trim();
+
+
+    let filtered = jobs.filter(job => {
+
+        const matchesSearch =
+            job.title.toLowerCase().includes(search) ||
+            job.company.toLowerCase().includes(search) ||
+            job.location.toLowerCase().includes(search) ||
+            job.category.toLowerCase().includes(search);
+
+
+        const matchesCategory =
+            currentCategory === "All" ||
+            job.category === currentCategory;
+
+
+        return matchesSearch && matchesCategory;
+
+    });
+
+
+    if (showingSaved) {
+
+        filtered =
+            filtered.filter(job =>
+                savedJobs.includes(job.id)
+            );
+
+    }
+
+
+    displayJobs(filtered);
+
+}
+
+
+/* =====================================
+   CATEGORY FILTER
+   ===================================== */
+
+function filterJobs(category, button) {
+
+    currentCategory = category;
+    showingSaved = false;
+
+
+    document
+        .querySelectorAll(".filter")
+        .forEach(btn =>
+            btn.classList.remove("active")
+        );
+
+
+    button.classList.add("active");
+
+
+    searchJobs();
+
+}
+
+
+/* =====================================
+   SAVE JOB
+   ===================================== */
+
+function toggleSave(id) {
+
+    if (savedJobs.includes(id)) {
+
+        savedJobs =
+            savedJobs.filter(jobId => jobId !== id);
+
+    } else {
+
+        savedJobs.push(id);
+
+    }
+
+
+    localStorage.setItem(
+        "savedJobs",
+        JSON.stringify(savedJobs)
+    );
+
+
+    searchJobs();
+
+}
+
+
+/* =====================================
+   SHOW SAVED
+   ===================================== */
+
+function showSaved() {
+
+    showingSaved = true;
+
+    const saved =
+        jobs.filter(job =>
+            savedJobs.includes(job.id)
+        );
+
+    displayJobs(saved);
+
+}
+
+
+/* =====================================
+   SHOW ALL
+   ===================================== */
+
+function showAll() {
+
+    showingSaved = false;
+
+    currentCategory = "All";
+
+    document
+        .querySelectorAll(".filter")
+        .forEach(btn =>
+            btn.classList.remove("active")
+        );
+
+    document
+        .querySelector(".filter")
+        .classList.add("active");
+
+
+    displayJobs(jobs);
+
+}
+
+
+/* =====================================
+   JOB DETAILS
+   ===================================== */
+
+function openJob(id) {
+
+    const job =
+        jobs.find(job => job.id === id);
+
+    if (!job) return;
+
+
+    document.getElementById("modalTitle")
+        .textContent = job.title;
+
+    document.getElementById("modalCompany")
+        .textContent = job.company;
+
+    document.getElementById("modalLocation")
+        .textContent = "📍 Location: " + job.location;
+
+    document.getElementById("modalEducation")
+        .textContent = "🎓 Education: " + job.education;
+
+    document.getElementById("modalExperience")
+        .textContent = "💼 Experience: " + job.experience;
+
+    document.getElementById("modalSalary")
+        .textContent = "💰 Salary: " + job.salary;
+
+    document.getElementById("modalDeadline")
+        .textContent = "⏰ Deadline: " + job.deadline;
+
+    document.getElementById("modalDescription")
+        .textContent = job.description;
+
+    document.getElementById("modalRequirements")
+        .textContent = job.requirements;
+
+    document.getElementById("modalApply")
+        .href = job.apply;
+
+
+    document
+        .getElementById("jobModal")
+        .classList.add("active");
+
+}
+
+
+/* =====================================
+   CLOSE MODAL
+   ===================================== */
+
+function closeModal() {
+
+    document
+        .getElementById("jobModal")
+        .classList.remove("active");
+
+}
+
+
+document
+    .getElementById("jobModal")
+    .addEventListener("click", function(e) {
+
+        if (e.target === this) {
+            closeModal();
+        }
+
+    });
+
+
+/* =====================================
+   DARK MODE
+   ===================================== */
+
+function toggleDarkMode() {
+
+    document
+        .body
+        .classList
+        .toggle("dark");
+
+
+    localStorage.setItem(
+        "darkMode",
+        document.body.classList.contains("dark")
+    );
+
+}
+
+
+if (
+    localStorage.getItem("darkMode") === "true"
+) {
+
+    document.body.classList.add("dark");
+
+}
+
+
+/* =====================================
+   NOTIFICATION
+   ===================================== */
+
+function showNotification() {
+
+    alert(
+        "Job alerts will be available when we connect the app to a real job database."
+    );
+
+}
+
+
+/* =====================================
+   START APP
+   ===================================== */
+
+displayJobs();
+
+</script>
+
+</body>
+</html>
